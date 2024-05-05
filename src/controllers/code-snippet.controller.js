@@ -46,7 +46,8 @@ const createSnippet = async (req, res) => {
 
 const getAllSnippet = async (req, res) => {
   try {
-    const codeSnippets = await CodeSnippet.find().populate(
+    const authorID = req.user._id;
+    const codeSnippets = await CodeSnippet.find({author:authorID}).populate(
       "author",
       "fullname -_id"
     );
