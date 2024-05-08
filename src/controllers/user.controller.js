@@ -140,9 +140,8 @@ const updatePassword = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  const id = req.user._id;
-
   try {
+    const id = req.user._id;
     // Find the user and delete all associated code snippets
     await CodeSnippet.deleteMany({ author: id });
 
